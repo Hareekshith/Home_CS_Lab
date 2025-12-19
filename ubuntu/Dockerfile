@@ -6,7 +6,8 @@ RUN apt-get update && \
         iputils-ping net-tools curl wget openssh-server sudo nano vim bash coreutils lsb-release && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y systemd systemd-sysv
+ENTRYPOINT ["/sbin/init"]
 # Ensure /var/run/sshd exists
 RUN mkdir -p /var/run/sshd
 
